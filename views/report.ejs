@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report</title>
+</head>
+<body>
+    <form action="/report" method="get">
+        <% if (complaints && complaints.length > 0) { %>
+            <% complaints.forEach((complaint) => { %>
+                <div class="report">
+                    <p><strong>Name : </strong><%= complaint.name %></p>
+                    <p><strong>Reg.No : </strong><%= complaint.reg %></p>
+                    <p><strong>Complaint Type : </strong><%= complaint.ctype %></p>
+                    <p><strong>Department : </strong><%= complaint.dept %></p>
+                    <p><strong>Complaint : </strong><%= complaint.complainttext %></p>
+                </div>
+            <% }) %>
+        <% } %>
+        
+    </form>
+</body>
+</html>

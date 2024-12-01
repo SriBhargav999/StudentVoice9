@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    h1{
+            color:blue;
+            margin:20px;
+            text-align:center;
+            text-decoration: underline;
+          }
+          form{
+            align-items:center;
+            background-color:rgb(255,255,255);
+            margin:80px;
+            border:groove;
+            float:left;
+            border-radius:3px;
+            padding:10px 30px 50px 30px;
+            margin-left:500px;
+            margin-right:400px;
+            /* box-shadow: 10px 10px #8b8989; */
+          }
+          
+          input {
+              width: 50vh;
+              margin: 8px;
+          }
+          button{
+            background-color: rgb(30, 117, 30);
+            padding:8px;
+            margin:10px;
+            width:50vh;
+            color:aliceblue;
+            font-size: large;
+            font-style:bold;
+          }
+        p{
+            background-color: rgb(243, 168, 168);
+            color:red;
+          }
+</style>
+<body>
+    <form action="/signin" method="post">
+        <h1>SignIn</h1>
+        <label>Email</label><br>
+        <input type="email" name="email"><br><br>
+        <label>Password</label><br>
+        <input type="password" name="password"><br><br>
+        <button type="submit">Submit</button>
+        <p><%=error%></p>
+    </form>
+</body>
+</html>

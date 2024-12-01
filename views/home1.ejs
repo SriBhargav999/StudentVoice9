@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Home</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        nav {
+            background: #000;
+            margin: 10px;
+            padding: 10px;
+        }
+        ul {
+            display: flex;
+            list-style: none;
+            justify-content: flex-end;
+        }
+        li {
+            padding: 10px;
+        }
+        a {
+            color: #fff;
+            text-decoration: none;
+        }
+        h1 {
+            text-align: center;
+        }
+        #filter{
+            text-align: center;
+        }
+        .cname h2 {
+            text-align: center;
+            margin: 0;
+            color: #333;
+        }
+        .cjs {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap; 
+            gap:10px;
+            margin-left:10rem;
+        }
+
+        .cards {
+            display: flex;
+            flex-direction: row;
+            width: 22%; 
+            margin: 10px; 
+            padding:10px;
+            border-radius: 5px;
+            background-color: #f4fbd0;
+        }
+
+        button {
+            background-color: rgb(56, 56, 246);
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+
+        button a {
+            color: white;
+            text-decoration: none;
+        }
+
+        button:hover {
+            background-color: #3a3ab2;
+        }
+
+        .like-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: #333;
+        }
+
+        .like-btn i {
+            color: red; 
+        }
+
+        .like-count {
+            margin-left: 10px;
+            font-size: 1rem;
+            color: #333;
+        }
+
+        button{
+            background-color: rgb(56, 56, 246);
+            color: #fff;
+            
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <ul class="u1">
+            <a href="/home1"><li>Home</li></a>
+            <a href="/complaints"><li>Post a Complaint</li></a>
+        </ul>
+    </nav>
+    
+    <h1>Complaints</h1>
+    <form action="/filter" method="post" id="filter">
+        <select name="filtername" onchange="this.form.submit()">
+            <option value=" ">Department</option>
+            <option value="CSE">CSE</option>
+            <option value="IT">IT</option>
+            <option value="AIDS">AIDS</option>
+            <option value="AIML">AIML</option>
+            <option value="ECE">ECE</option>
+            <option value="MECH">MECH</option>
+            <option value="CIVIL">CIVIL</option>
+            <option value="CSBS">CSBS</option><hr>
+            <option value="all" >&#10060 All</option>
+        </select>
+    </form>
+    <div class="cjs">
+        <% if (complaints && complaints.length > 0) { %>
+            <% complaints.forEach((complaint) => { %>
+                <div class="cards">
+                <div class="complaint">
+                    <div class="cname">
+                        <h2><%= complaint.ctype %></h2>
+                    </div>
+                    <p><%= complaint.complainttext %></p>
+                    <div class="like-section"></div>
+                        
+                        <form action="/liked" method="post">
+                            <input type='hidden' value='<%= complaint._id %>' name=like />
+                            <button class="like-btn"><i class="fa-regular fa-heart"></i></button>
+                            <span class="like-count"><%= complaint.likes %></span>
+                        </form>
+                        
+                        <button type="btn"><a href="report">view more....</a></button>
+                    </div>
+                </div>
+                    
+                
+            <% }) %>
+        <% } else { %>
+            <h2>No complaints till now</h2>
+        <% } %>
+        
+    </div>
+</body>
+</html>

@@ -1,0 +1,15 @@
+{
+  "name": "awt",
+  "version": "1.0.0",
+  "description": "connect monogodb with express and nodejs",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "bhargav",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.4.5"
+  }
+}
